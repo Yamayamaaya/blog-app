@@ -1,0 +1,71 @@
+/* 
+    <div className= "homePage">
+        < div className= "postContents">
+            <div className= "postHeader">
+                <h3>タイトル</h3>
+            </div>
+            <div className= "postTextContainer">
+                投稿内容
+            </div>
+            <div className= "postFooter">
+                <div className= "postImformation">
+                    <div className= "postAuther">
+                        <p>投稿者</p>
+                    </div>
+                    <div className= "postDate">
+                        <p>投稿日</p>
+                    </div>
+                </div>
+                <div className= "postButton">
+                    <button>編集</button>
+                    <button>削除</button>
+                </div>
+            </div>  
+        </div>
+    </div> */
+
+
+.postContents {
+    width : 80%;
+    margin : 30px auto;
+    border : 1px solid #ccc;
+    border-radius : 5px;
+    margin-bottom : 10px;
+}
+
+.postHeader {
+    padding : 10px;
+    border-bottom : 1px solid #ccc;
+}
+
+.postTextContainer {
+    padding : 10px;
+}
+
+.postFooter {
+    display : flex;
+    justify-content : space-between;
+    align-items : center;
+    padding : 10px;
+    border-top : 1px solid #ccc;
+}   
+
+.postImformation {
+    display : flex;
+    gap : 10px;
+}   
+
+.postButton {
+    display : flex;
+    gap : 10px;
+}
+
+.postButton button {
+    padding : 5px;
+    border : none;
+    border-radius : 5px;
+    background-color : #e9a966;
+    color : #fff;
+    cursor : pointer;
+}
+

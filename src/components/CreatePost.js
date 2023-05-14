@@ -3,10 +3,12 @@ import './CreatePost.css';
 import { useState } from 'react';
 import { collection, addDoc } from "firebase/firestore";
 import { auth, db } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 
 const CreatePost = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const navigate = useNavigate();
 
     const createPost = async() => {
         await addDoc(collection(db, "blogs"), {
@@ -19,6 +21,7 @@ const CreatePost = () => {
             },
             createdTime: new Date(),
         });
+        navigate('/');
     }   
 
 
