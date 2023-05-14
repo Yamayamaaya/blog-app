@@ -1,17 +1,27 @@
 import React from 'react';
 import './CreatePost.css';
 import { useState } from 'react';
+import { collection, addDoc } from "firebase/firestore";
+import { auth, db } from '../firebase';
 
 const CreatePost = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
 
-    const createPost = () => {
-        const post = {title, content};
-        console.log(post);
+    const createPost = async() => {
+        await addDoc(collection(db, "blogs"), {
+            title: title,
+            content: content,
+            auther:
+            { 
+                name:auth.currentUser.displayName,
+                id:auth.currentUser.uid
+            },
+            createdTime: new Date(),
+        });
     }   
 
-    
+
     return (
         <div>
             <h1>Create Post</h1>
