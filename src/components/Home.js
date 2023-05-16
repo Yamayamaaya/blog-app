@@ -1,21 +1,25 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { getDocs, collection, query } from "firebase/firestore";
+import React, { useEffect, useState } from 'react';
+import { getDocs, collection, query, doc, deleteDoc } from "firebase/firestore";
 import { orderBy } from "firebase/firestore";
 import { db } from '../firebase';
 import './Home.css';
 
 const Home = () => {   
     const [posts, setPosts] = useState([]);
-    const q = query(collection(db, "blogs"),orderBy("createdTime", "desc"));
+    
     useEffect(() => {
+        const q = query(collection(db, "blogs"),orderBy("createdTime", "desc"));
         const getPosts = async () => {
             const data = await getDocs(q);
             setPosts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         };
         getPosts();
-        
     }, []);
+
+    const deleteHandler = async (id) => {
+        await deleteDoc(doc(db, "blogs", id));
+    }
+
     return (
         <div className= "homePage">
             {posts.map((post) => {
@@ -38,7 +42,7 @@ const Home = () => {
                             </div>
                             <div className= "postButton">
                                 <button>編集</button>
-                                <button>削除</button>
+                                <button onClick = {() => deleteHandler(post.id)}>削除</button>
                             </div>
                         </div>  
                     </div>
