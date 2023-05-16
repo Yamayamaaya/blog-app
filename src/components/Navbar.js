@@ -8,13 +8,10 @@ const Navbar = ({isAuth}) => {
     return (
         <nav className="navbar">
                 <Link to="/"><FontAwesomeIcon icon = {faHouse} /> Home</Link>
-                {
-                    isAuth ? <Link to="/create-post"><FontAwesomeIcon icon = {faFilePen} /> Create Post</Link> : <Link to="/login"><FontAwesomeIcon icon = {faFilePen} /> Create Post</Link>
-                }
+                <Link to="/create-post"><FontAwesomeIcon icon = {faFilePen} /> Create Post</Link>
                 {
                     isAuth ? <Link to="/logout"><FontAwesomeIcon icon = {faArrowRightToBracket} /> Logout</Link> : <Link to="/login"><FontAwesomeIcon icon = {faArrowRightToBracket} /> Login</Link>
                 }
-        
         </nav>
     );
 }

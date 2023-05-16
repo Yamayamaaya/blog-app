@@ -1,14 +1,22 @@
 import React from 'react';
 import './CreatePost.css';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { collection, addDoc } from "firebase/firestore";
 import { auth, db } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 
-const CreatePost = () => {
+const CreatePost = ({isAuth}) => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if(!isAuth){
+            navigate('/login');
+        }
+    }, []);
+
+
 
     const createPost = async() => {
         await addDoc(collection(db, "blogs"), {
