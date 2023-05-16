@@ -11,16 +11,16 @@ const Home = () => {
     useEffect(() => {
         const getPosts = async () => {
             const data = await getDocs(q);
-            setPosts(data.docs.map(doc => doc.data()));
+            setPosts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         };
         getPosts();
         
-    });
+    }, []);
     return (
         <div className= "homePage">
             {posts.map((post) => {
                 return(
-                    < div className= "postContents">
+                    < div className= "postContents" key = {post.id}>
                         <div className= "postHeader">
                             <h3>{post.title}</h3>
                         </div>
