@@ -27,9 +27,6 @@ const CreatePost = () => {
 
     return (
         <div>
-            <h1>Create Post</h1>
-            <p>This is the create post page.</p>
-            
             <div className="postContainer">
                 <h3>記事を投稿する</h3>
                 <div className="inputPost">
