@@ -1,0 +1,44 @@
+/* 
+<div>
+<h1>Login</h1>
+<p>Login to start</p>
+<button onClick = {loginWithGoogle}>Googleでログイン</button>
+</div> */
+
+.LoginContainer {
+    width : 100%;
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
+}
+
+.LoginContainer h1 {
+    font-size : 50px;
+    font-weight : 600;
+    margin-bottom : 20px;
+}
+
+.LoginContainer p {
+    font-size : 20px;
+    font-weight : 600;
+    margin-bottom : 20px;
+}   
+
+.LoginContainer button {
+    padding : 10px;
+    border : none;
+    border-radius : 5px;
+    background-color : #e9a966;
+    color : #fff;
+    font-weight : 600;
+    cursor : pointer;
+    transition : all 0.3s ease;
+}
+
+.LoginContainer button:hover {
+    background-color : #c18c54;
+    color : #000;
+}
+
+
