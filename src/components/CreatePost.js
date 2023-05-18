@@ -1,50 +1,55 @@
-import React from 'react';
-import './CreatePost.css';
-import { useState,useEffect } from 'react';
+import React from "react";
+import "./CreatePost.css";
+import { useState, useEffect } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import { auth, db } from '../firebase';
-import { useNavigate } from 'react-router-dom';
+import { auth, db } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
-const CreatePost = ({isAuth}) => {
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const navigate = useNavigate();
+const CreatePost = ({ isAuth }) => {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        if(!isAuth){
-            navigate('/login');
-        }
-    }, []);
+  useEffect(() => {
+    if (!isAuth) {
+      navigate("/login");
+    }
+  }, [isAuth]);
 
+  const createPost = async () => {
+    await addDoc(collection(db, "blogs"), {
+      title: title,
+      content: content,
+      auther: {
+        name: auth.currentUser.displayName,
+        id: auth.currentUser.uid,
+      },
+      createdTime: new Date(),
+    });
+    navigate("/");
+  };
 
-
-    const createPost = async() => {
-        await addDoc(collection(db, "blogs"), {
-            title: title,
-            content: content,
-            auther:
-            { 
-                name:auth.currentUser.displayName,
-                id:auth.currentUser.uid
-            },
-            createdTime: new Date(),
-        });
-        navigate('/');
-    }   
-
-
-    return (
-        <div>
-            <div className="postContainer">
-                <h3>記事を投稿する</h3>
-                <div className="inputPost">
-                    <input type="text" placeholder="タイトル" onChange={(e) => setTitle(e.target.value)}/>
-                    <textarea placeholder="投稿内容を記入" onChange={(e) => setContent(e.target.value)}/>
-                    <button className="postButton" onClick={createPost}>投稿</button>
-                </div>
-            </div>
+  return (
+    <div>
+      <div className="postContainer">
+        <h3>記事を投稿する</h3>
+        <div className="inputPost">
+          <input
+            type="text"
+            placeholder="タイトル"
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <textarea
+            placeholder="投稿内容を記入"
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <button className="postButton" onClick={createPost}>
+            投稿
+          </button>
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
 
 export default CreatePost;
