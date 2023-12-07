@@ -1,0 +1,55 @@
+.postContainer {
+    width: 60%;
+    margin: 40px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.postContainer h3 {
+    text-align: center;
+    padding: 10px;
+}
+
+.inputPost {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputPost input {
+    width: 80%;
+    height: 40px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.inputPost textarea {
+    width: 80%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    height: 200px;
+}
+
+.inputPost button {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e9a966;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.inputPost button:hover {
+    background-color: #c18c54;
+    color: #000;
+}
